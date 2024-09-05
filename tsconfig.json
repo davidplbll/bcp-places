@@ -5,7 +5,13 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "@modules/*":["./app/core/modules/*"],
+      "@helpers/*":["./app/core/helpers/*"],
+      "@enums/*":["./app/core/enums/*"],
+      "@enums":["./app/core/enums/index.ts"],
+      "@contracts":["./app/core/contracts/index.ts"],
+      "@core-libraries/*":["./app/core-libraries/*"],
     }
   },
   "include": [

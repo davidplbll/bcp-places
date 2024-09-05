@@ -1,6 +1,4 @@
-# Welcome to your Expo app 👋
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# BCPlaces 👋
 
 ## Get started
 
@@ -16,35 +14,58 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Uso de librería
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Requerimientos
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Se requiere de llave de google maps
 
-## Get a fresh project
+### Configuración
 
-When you're ready, run:
-
-```bash
-npm run reset-project
+```xlm
+   <meta-data android:name="com.google.android.geo.API_KEY" android:value="API_KEY" />
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Instalación
 
-## Learn more
+La librería se encuentra en el proyecto por tanto para usarla se utilizara requireNativeComponent
 
-To learn more about developing your project with Expo, look at the following resources:
+```typescript
+import { requireNativeComponent } from 'react-native';
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+export default requireNativeComponent<any>('BcpMapViewer');
+```
 
-## Join the community
+### Uso
 
-Join our community of developers creating universal apps.
+La librería recibe como props las ubicaciones para generar los marcadores
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```typescript
+<View style={{ flex: 1 }}>
+  <BcpMapViewer style={{ flex: 1 }} markers={placeList} />
+</View>
+```
+
+y cada marcador debe tener las propiedades
+
+- latitude : latitud del marcador
+- longitude: longitud del marcador
+- title: titulo del lugar
+- deescription: descripción del lugar
+
+```json
+  {
+    "latitude": 40.416487,
+    "longitude": -3.704112,
+    "title": "Restaurante Casa Lucio",
+    "description": "Conocido por sus huevos rotos ",
+    "images":[
+      "imagen1"
+    ]
+  },
+```
+
+### credenciales para login
+
+- usuario: testUser@mail.com
+- contraseña: testPassword
